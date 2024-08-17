@@ -32,6 +32,8 @@
 #if !defined(CONFIG_INPUT_BOOSTER) || defined(CONFIG_ARCH_MSM) // Input Booster +
 #include <linux/input/input.h>
 #include <linux/msm-bus.h>
+#include <linux/msm-bus-board.h>
+
 #define TOUCH_REG_BUS_VECTOR_ENTRY(ab_val, ib_val)    \
     {                        \
         .src = MSM_BUS_MASTER_AMPSS_M0,        \
