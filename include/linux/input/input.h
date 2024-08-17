@@ -139,13 +139,6 @@
 
 
 
-#define TOUCH_REG_BUS_VECTOR_ENTRY(ab_val, ib_val)    \
-    {                        \
-        .src = MSM_BUS_MASTER_AMPSS_M0,        \
-        .dst = MSM_BUS_SLAVE_EBI_CH0,    \
-        .ab = (ab_val),                \
-        .ib = (ib_val),                \
-    }
 
 
 

@@ -32,6 +32,28 @@
 #if !defined(CONFIG_INPUT_BOOSTER) || defined(CONFIG_ARCH_MSM) // Input Booster +
 #include <linux/input/input.h>
 #include <linux/msm-bus.h>
+#define TOUCH_REG_BUS_VECTOR_ENTRY(ab_val, ib_val)    \
+    {                        \
+        .src = MSM_BUS_MASTER_AMPSS_M0,        \
+        .dst = MSM_BUS_SLAVE_EBI_CH0,    \
+        .ab = (ab_val),                \
+        .ib = (ib_val),                \
+    }
+
+#define BUS_VOTE_507_MHZ 7500000000
+#define BUS_VOTE_900_MHZ 15000000000
+
+static struct msm_bus_vectors touch_reg_bus_vectors[] = {
+	TOUCH_REG_BUS_VECTOR_ENTRY(0, 0),
+	TOUCH_REG_BUS_VECTOR_ENTRY(0, BUS_VOTE_507_MHZ),
+	TOUCH_REG_BUS_VECTOR_ENTRY(0, BUS_VOTE_900_MHZ),
+};
+static struct msm_bus_paths touch_reg_bus_usecases[3];
+static struct msm_bus_scale_pdata touch_reg_bus_scale_table = {
+	.usecase = touch_reg_bus_usecases,
+	.num_usecases = 3,
+	.name = "touch_bw",
+};
 static u32 bus_hdl;
 
 #endif // Input Booster -
@@ -790,19 +812,8 @@ void input_booster_init()
 	}
 #if defined(CONFIG_ARCH_MSM)
 	int y;
-	#define BUS_VOTE_507_MHZ 7500000000
-	#define BUS_VOTE_900_MHZ 15000000000
-	static struct msm_bus_vectors touch_reg_bus_vectors[] = {
-		TOUCH_REG_BUS_VECTOR_ENTRY(0, 0),
-		TOUCH_REG_BUS_VECTOR_ENTRY(0, BUS_VOTE_507_MHZ),
-		TOUCH_REG_BUS_VECTOR_ENTRY(0, BUS_VOTE_900_MHZ),
-	};
-	static struct msm_bus_paths touch_reg_bus_usecases[ARRAY_SIZE(touch_reg_bus_vectors)];
-	static struct msm_bus_scale_pdata touch_reg_bus_scale_table = {
-		.usecase = touch_reg_bus_usecases,
-		.num_usecases = ARRAY_SIZE(touch_reg_bus_usecases),
-		.name = "touch_bw",
-	};
+
+
 
 
 	for (y = 0; y < touch_reg_bus_scale_table.num_usecases; y++) {
