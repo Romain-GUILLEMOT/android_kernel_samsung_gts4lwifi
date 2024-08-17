@@ -25,7 +25,9 @@ static ssize_t chg_det_show(struct device *in_dev,
 {
 	int ret = 0;
 
+    #ifdef CONFIG_SEC_PM
 	ret = qpnp_pon_check_chg_det();
+    #endif
 
 	pr_info("%s: ret = %d\n", __func__, ret);
 	return sprintf(buf, "%d\n", ret);

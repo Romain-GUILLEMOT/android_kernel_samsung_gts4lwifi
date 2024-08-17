@@ -47,10 +47,12 @@
 }
 
 #ifdef USE_HMP_BOOST
-#define set_hmp(enable)	 { \
+int set_hmp_boost(int enable);  // Déclarez la fonction si USE_HMP_BOOST est défini
+
+#define set_hmp(enable) { \
 	if(enable != current_hmp_boost) { \
 		pr_debug("[Input Booster2] ******      set_hmp : %d ( %s )\n", enable, __FUNCTION__); \
-		if (set_hmp_boost(enable) < 0) {\
+		if (set_hmp_boost(enable) < 0) { \
 			pr_debug("[Input Booster2] ******            !!! fail to HMP !!!\n"); \
 		} \
 		current_hmp_boost = enable; \
@@ -59,6 +61,7 @@
 #else
 #define set_hmp(enable)
 #endif
+
 
 #define SET_BOOSTER  { \
 	int freq = -1;\
