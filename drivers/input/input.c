@@ -782,6 +782,11 @@ void input_booster_init()
 		INIT_SYSFS_DEVICE(key_two)
 	}
 #if defined(CONFIG_ARCH_MSM)
+	extern struct msm_bus_scale_pdata touch_reg_bus_scale_table;
+    extern struct msm_bus_vectors touch_reg_bus_vectors[];
+    extern struct msm_bus_paths touch_reg_bus_usecases[ARRAY_SIZE(touch_reg_bus_vectors)];
+	static u32 bus_hdl;
+
 	for (i = 0; i < touch_reg_bus_scale_table.num_usecases; i++) {
 		touch_reg_bus_usecases[i].num_paths = 1;
 		touch_reg_bus_usecases[i].vectors = &touch_reg_bus_vectors[i];
