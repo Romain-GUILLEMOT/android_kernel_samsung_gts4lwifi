@@ -44,6 +44,7 @@
 #include <linux/regulator/consumer.h>
 #include <linux/of_gpio.h>
 #include <linux/clk.h>
+#include <asm/system_info.h>
 
 #include "fc8300.h"
 #include "fc8300_i2c.h"
