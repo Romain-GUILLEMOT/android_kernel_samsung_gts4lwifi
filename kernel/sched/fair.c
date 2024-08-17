@@ -55,6 +55,12 @@ unsigned int normalized_sysctl_sched_latency = 6000000ULL;
 unsigned int sysctl_sched_sync_hint_enable = 1;
 unsigned int sysctl_sched_cstate_aware = 1;
 
+/* Added by Romain Guillemot */
+
+extern unsigned int sysctl_sched_ilb_ctl;
+
+/* Added by Romain Guillemot */
+
 /*
  * The initial- and re-scaling of tunables is configurable
  * (default SCHED_TUNABLESCALING_LOG = *(1+ilog(ncpus))
