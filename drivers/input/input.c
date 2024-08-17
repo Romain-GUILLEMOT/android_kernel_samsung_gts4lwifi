@@ -31,7 +31,6 @@
 
 #if !defined(CONFIG_INPUT_BOOSTER) || defined(CONFIG_ARCH_MSM) // Input Booster +
 #include <linux/input/input.h>
-#include <linux/msm_bus.h>
 extern struct msm_bus_scale_pdata touch_reg_bus_scale_table;
 extern struct msm_bus_paths touch_reg_bus_usecases[];
 extern struct msm_bus_vectors touch_reg_bus_vectors[];
