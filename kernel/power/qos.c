@@ -314,6 +314,10 @@ static inline int pm_qos_get_value(struct pm_qos_constraints *c)
 
 	case PM_QOS_MAX:
 		return plist_last(&c->list)->prio;
+	/* Added by Romain Guillemot */
+	case PM_QOS_FORCE_MAX:
+		return plist_last(&c->list)->prio;
+	/* Added by Romain Guillemot */
 
 	case PM_QOS_SUM:
 		plist_for_each(node, &c->list)
