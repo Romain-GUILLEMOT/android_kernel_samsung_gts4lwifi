@@ -790,9 +790,18 @@ void input_booster_init()
 	}
 #if defined(CONFIG_ARCH_MSM)
 	int y;
-	extern struct msm_bus_scale_pdata touch_reg_bus_scale_table;
-    extern struct msm_bus_vectors touch_reg_bus_vectors[];
-    extern struct msm_bus_paths touch_reg_bus_usecases[3];
+	static struct msm_bus_vectors touch_reg_bus_vectors[] = {
+		TOUCH_REG_BUS_VECTOR_ENTRY(0, 0),
+		TOUCH_REG_BUS_VECTOR_ENTRY(0, BUS_VOTE_507_MHZ),
+		TOUCH_REG_BUS_VECTOR_ENTRY(0, BUS_VOTE_900_MHZ),
+	};
+	static struct msm_bus_paths touch_reg_bus_usecases[ARRAY_SIZE(touch_reg_bus_vectors)];
+	static struct msm_bus_scale_pdata touch_reg_bus_scale_table = {
+		.usecase = touch_reg_bus_usecases,
+		.num_usecases = ARRAY_SIZE(touch_reg_bus_usecases),
+		.name = "touch_bw",
+	};
+
 
 	for (y = 0; y < touch_reg_bus_scale_table.num_usecases; y++) {
 		touch_reg_bus_usecases[y].num_paths = 1;

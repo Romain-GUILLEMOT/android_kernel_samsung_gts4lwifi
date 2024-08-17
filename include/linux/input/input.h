@@ -148,19 +148,7 @@
         .ib = (ib_val),                \
     }
 
-static struct msm_bus_vectors touch_reg_bus_vectors[] = {
-    TOUCH_REG_BUS_VECTOR_ENTRY(0, 0),
-    TOUCH_REG_BUS_VECTOR_ENTRY(0, BUS_VOTE_507_MHZ),
-    TOUCH_REG_BUS_VECTOR_ENTRY(0, BUS_VOTE_900_MHZ),
-};
-static struct msm_bus_paths touch_reg_bus_usecases[ARRAY_SIZE(touch_reg_bus_vectors)];
-static struct msm_bus_scale_pdata touch_reg_bus_scale_table = {
-    .usecase = touch_reg_bus_usecases,
-    .num_usecases = ARRAY_SIZE(touch_reg_bus_usecases),
-    .name = "touch_bw",
-};
 
-static u32 bus_hdl;
 
 #ifdef USE_HMP_BOOST
 #define set_hmp(level)	 { \
