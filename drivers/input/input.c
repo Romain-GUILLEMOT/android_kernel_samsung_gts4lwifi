@@ -31,6 +31,7 @@
 
 #if !defined(CONFIG_INPUT_BOOSTER) || defined(CONFIG_ARCH_MSM) // Input Booster +
 #include <linux/input/input.h>
+#include <linux/msm_bus.h>
 #endif // Input Booster -
 
 MODULE_AUTHOR("Vojtech Pavlik <vojtech@suse.cz>");
