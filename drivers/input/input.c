@@ -32,6 +32,8 @@
 #if !defined(CONFIG_INPUT_BOOSTER) || defined(CONFIG_ARCH_MSM) // Input Booster +
 #include <linux/input/input.h>
 #include <linux/msm-bus.h>
+static u32 bus_hdl;
+
 #endif // Input Booster -
 
 MODULE_AUTHOR("Vojtech Pavlik <vojtech@suse.cz>");
@@ -783,10 +785,10 @@ void input_booster_init()
 		INIT_SYSFS_DEVICE(key_two)
 	}
 #if defined(CONFIG_ARCH_MSM)
+	int i;
 	extern struct msm_bus_scale_pdata touch_reg_bus_scale_table;
     extern struct msm_bus_vectors touch_reg_bus_vectors[];
-    extern struct msm_bus_paths touch_reg_bus_usecases[ARRAY_SIZE(touch_reg_bus_vectors)];
-	static u32 bus_hdl;
+    extern struct msm_bus_paths touch_reg_bus_usecases[3];
 
 	for (i = 0; i < touch_reg_bus_scale_table.num_usecases; i++) {
 		touch_reg_bus_usecases[i].num_paths = 1;
