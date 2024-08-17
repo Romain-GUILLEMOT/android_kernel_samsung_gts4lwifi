@@ -790,6 +790,8 @@ void input_booster_init()
 	}
 #if defined(CONFIG_ARCH_MSM)
 	int y;
+	#define BUS_VOTE_507_MHZ 7500000000
+	#define BUS_VOTE_900_MHZ 15000000000
 	static struct msm_bus_vectors touch_reg_bus_vectors[] = {
 		TOUCH_REG_BUS_VECTOR_ENTRY(0, 0),
 		TOUCH_REG_BUS_VECTOR_ENTRY(0, BUS_VOTE_507_MHZ),

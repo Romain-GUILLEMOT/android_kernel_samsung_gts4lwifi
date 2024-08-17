@@ -137,8 +137,7 @@
 #include <linux/msm-bus.h>
 #include <linux/msm-bus-board.h>
 
-#define BUS_VOTE_507_MHZ 7500000000
-#define BUS_VOTE_900_MHZ 15000000000
+
 
 #define TOUCH_REG_BUS_VECTOR_ENTRY(ab_val, ib_val)    \
     {                        \
