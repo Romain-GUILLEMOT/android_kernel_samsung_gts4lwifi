@@ -46,7 +46,11 @@ static DEFINE_IDA(input_ida);
 
 static LIST_HEAD(input_dev_list);
 static LIST_HEAD(input_handler_list);
-
+/* Déclaration de la fonction set_hmp_boost */
+int set_hmp_boost(int enable) {
+	/* Implémentation de la fonction */
+	return 0;  // Retourner un code de succès ou d'erreur
+}
 /*
  * input_mutex protects access to both input_dev_list and input_handler_list.
  * This also causes input_[un]register_device and input_[un]register_handler

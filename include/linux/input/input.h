@@ -47,7 +47,6 @@
 }
 
 #ifdef USE_HMP_BOOST
-int set_hmp_boost(int enable);  // Déclarez la fonction si USE_HMP_BOOST est défini
 
 #define set_hmp(enable) { \
 	if(enable != current_hmp_boost) { \
