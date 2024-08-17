@@ -170,6 +170,7 @@ static unsigned pm8841_rev = 0;
 unsigned int sec_dbg_level;
 static unsigned secure_dump = 0;
 static unsigned rp_enabled = 0;
+extern unsigned int lpcharge;
 
 uint runtime_debug_val;
 module_param_named(enable, enable, uint, 0644);
